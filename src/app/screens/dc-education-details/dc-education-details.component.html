@@ -1,0 +1,72 @@
+<div class="container">
+    <div class="row w-100">
+        <div class="p-3 mb-4 mt-4 bg-light rounded-3">
+            <div class="">
+                <h2 class="text-center">Education Details</h2>
+            </div>
+        </div>
+    </div>
+
+    <div class="row w-100">
+        <div class="p-3 mb-4 mt-4 bg-light rounded-3">
+
+            <!-- Case Number Input -->
+            <div class="form-group mb-3">
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="caseNumber" ngDefaultControl
+                        placeholder="Enter Case Number" [(ngModel)]="caseNumber">
+                    <label for="caseNumber">Case Number</label>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="row w-100">
+        <div class="p-3 mb-4 mt-4 bg-light rounded-3">
+            <form [formGroup]="educationDetailsForm">
+                <div class="row">
+                    <div class="col-6">
+
+                        <!-- Highest Degree -->
+                        <div class="form-group mb-3">
+                            <div class="form-floating mb-3">
+                                <input formControlName="highestQualification" type="text" class="form-control"
+                                    id="highestQualification" placeholder="Enter Highest Qualification">
+                                <label for="highestQualification">Highest Qualification</label>
+                            </div>
+                        </div>
+    
+                        <!-- University Name -->
+                        <div class="form-group mb-3">
+                            <div class="form-floating mb-3">
+                                <input formControlName="qualificationUniversity" type="text" class="form-control"
+                                    id="qualificationUniversity" placeholder="Enter University Name">
+                                <label for="qualificationUniversity">University Name</label>
+                            </div>
+                        </div>
+    
+                    </div>
+                    <div class="col-6">
+                        <!-- Graduation Year -->
+                        <div class="form-group mb-3">
+                            <div class="form-floating mb-3">
+                                <input formControlName="qualificationYear" type="text" class="form-control"
+                                    id="qualificationYear" placeholder="Enter Qualification Year">
+                                <label for="qualificationYear">Qualification Year</label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div *ngIf="educationDetailsForm.valid" class="d-flex justify-content-center">
+                    <button (click)="saveEducationDetails()" type="submit" class="btn btn-primary">Submit</button>
+                </div>
+                <div *ngIf="!educationDetailsForm.valid" class="d-flex justify-content-center">
+                    <button disabled type="submit" class="btn btn-danger">Submit</button>
+                </div>
+            </form>
+        </div>
+        
+    </div>
+</div>

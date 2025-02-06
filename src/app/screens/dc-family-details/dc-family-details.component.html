@@ -1,0 +1,90 @@
+<div class="container">
+    <div class="row w-100">
+        <div class="p-3 mb-4 mt-4 bg-light rounded-3">
+            <div class="">
+                <h2 class="text-center">Family Details</h2>
+            </div>
+        </div>
+    </div>
+
+    <div class="row w-100">
+        <div class="p-3 mb-4 mt-4 bg-light rounded-3">
+
+            <!-- Case Number Input -->
+            <div class="form-group mb-3">
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="caseNumber" ngDefaultControl
+                        placeholder="Enter Case Number" [(ngModel)]="caseNumber">
+                    <label for="caseNumber">Case Number</label>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="row w-100">
+        <div class="p-3 mb-4 mt-4 bg-light rounded-3">
+            <form [formGroup]="familyDetailsForm">
+                <div formArrayName="kids" *ngFor="let kid of kids.controls; let i = index" class="row">
+                    <div class="row mt-3" [formGroupName]="i">
+                        <div class="col-6">
+
+                            <!-- Kid Name -->
+                            <div class="form-group mb-3">
+                                <div class="form-floating mb-3">
+                                    <input formControlName="kidName" type="text" class="form-control"
+                                        id="kidName" placeholder="Enter Name">
+                                    <label for="kidName">Kid Name</label>
+                                </div>
+                            </div>
+    
+                            <!-- Kid Gender -->
+                            <select formControlName="kidGender" class="form-select" aria-label="Default select example">
+                                <option selected disabled>Select Gender</option>
+                                <option value="Male">Male</option>
+                                <option value="Male">Female</option>
+                                <option value="Male">Other</option>
+                            </select>
+    
+    
+                        </div>
+                        <div class="col-6">
+    
+                            <!-- Kid Date of Birth -->
+    
+                            <div class="form-group mb-3">
+                                <div class="form-floating mb-3">
+                                    <input formControlName="kidDob" type="date" class="form-control"
+                                        id="kidDob" placeholder="Enter Date of Birth">
+                                    <label for="kidDob">Date of Birth</label>
+                                </div>
+                            </div>
+    
+                            <!-- Kid Aadhar -->
+                            <div class="form-group mb-3">
+                                <div class="form-floating mb-3">
+                                    <input formControlName="kidAadhar" type="number" class="form-control"
+                                        id="kidAadhar" placeholder="Enter Aadhar Number">
+                                    <label for="kidAadhar">Kid Aadhar</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-center">
+                        <button (click)="addKid()" type="submit" class="btn btn-success m-1">Add Kid</button>
+                        <button *ngIf="kids.length >=2" (click)="removeKid(i)" type="submit" class="btn btn-danger m-1">Remove Kid</button>
+                    </div>
+                </div>
+
+                <div class="d-flex justify-content-center">
+                    <button *ngIf="familyDetailsForm.valid" (click)="saveFamilyDetails()" type="submit" class="btn btn-primary m-1">Submit</button>
+                    <button *ngIf="!familyDetailsForm.valid" disabled type="submit" class="btn btn-danger m-1">Submit</button>
+                </div>
+                
+            </form>
+        </div>
+        
+    </div>
+</div>
+
+

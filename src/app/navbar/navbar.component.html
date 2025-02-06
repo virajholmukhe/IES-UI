@@ -9,18 +9,19 @@
 
         <ul class="nav nav-pills">
             <li class="nav-item">
-                <div class="dropdown text-end">
-                    <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                      <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
-                    </a>
-                    <ul class="dropdown-menu text-small">
-                      <li><a class="dropdown-item" href="#">New project...</a></li>
-                      <li><a class="dropdown-item" href="#">Settings</a></li>
-                      <li><a class="dropdown-item" href="#">Profile</a></li>
-                      <li><hr class="dropdown-divider"></li>
-                      <li><a (click)="logout()" class="dropdown-item cursor-pointer">Sign out</a></li>
-                    </ul>
-                  </div>
+                <div *ngIf="!isLoggedIn ; else sessionButtons" class="d-grid gap-2 d-md-flex justify-content-md-end">
+                    <a routerLink="/login" class="btn btn-outline-primary btn-sm me-md-2">Login</a>
+                    <a routerLink="/register" class="btn btn-outline-primary btn-sm" >Register</a>
+                </div>
+                <ng-template #sessionButtons>
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                        <a routerLink="/profile" class="d-block link-body-emphasis text-decoration-none">
+                            <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
+                        </a>
+                        <a class="btn btn-outline-danger btn-sm" (click)="logout()">Logout</a>
+                        <a class="btn btn-outline-info btn-sm" style="cursor:auto;">{{role}}</a>
+                    </div>
+                </ng-template>
             </li>
         </ul>
     </header>

@@ -1,111 +1,91 @@
 <div class="wrapper">
     <!-- Sidebar  -->
     <nav id="sidebar">
+
         <ul class="list-unstyled components">
-            <li class="active">
-                
-                <a routerLink="/dashboard"><i class="bi bi-speedometer2"></i> Dashboard</a>
+            <li>
+                <a routerLink="/dashboard">
+                    <i class="bi bi-speedometer2"></i>
+                    Dashboard
+                </a>
             </li>
             <li>
-                <a data-bs-toggle="collapse" href="#application_registration" data-toggle="collapse" aria-expanded="false" aria-controls="application_registration" class="dropdown-toggle">
-                    <i class="bi bi-person-vcard"></i>
+                <a href="#ar" class="dropdown-toggle" data-bs-toggle="collapse"  role="button" aria-expanded="false" aria-controls="ar">
+                    <i class="bi bi-file-text"></i>
                     Application Registration
                 </a>
-                <ul class="collapse list-unstyled" id="application_registration">
+                <ul class="collapse list-unstyled" id="ar">
                     <li>
-                        <a >Create Application</a>
+                        <a routerLink="/create-application">Create Application</a>
                     </li>
                     <li>
-                        <a href="#">View Application</a>
+                        <a routerLink="/view-applications">View Applications</a>
                     </li>
                 </ul>
             </li>
             <li>
-                <a data-bs-toggle="collapse" href="#data_collection" data-toggle="collapse" aria-expanded="false" aria-controls="data_collection" class="dropdown-toggle">
+                <a href="#dc" class="dropdown-toggle" data-bs-toggle="collapse"  role="button" aria-expanded="false" aria-controls="dc">
                     <i class="bi bi-database"></i>
                     Data Collection
                 </a>
-                <ul class="collapse list-unstyled" id="data_collection">
+                <ul class="collapse list-unstyled" id="dc">
                     <li>
-                        <a>Plan Selection</a>
+                        <a routerLink="/plan-selection">Plan Selection</a>
                     </li>
                     <li>
-                        <a href="#">Income Details</a>
+                        <a routerLink="/income-details">Income Details</a>
                     </li>
                     <li>
-                        <a href="#">Education Details</a>
+                        <a routerLink="/education-details">Education Details</a>
                     </li>
                     <li>
-                        <a href="#">Family Details</a>
+                        <a routerLink="/family-details">Family Details</a>
                     </li>
                     <li>
-                        <a href="#">Summary Screen</a>
+                        <a routerLink="/bank-details">Bank Details</a>
+                    </li>
+                    <li>
+                        <a routerLink="/summary-screen">Summary Screen</a>
                     </li>
                 </ul>
             </li>
             <li>
-                <a data-bs-toggle="collapse" href="#eligibility_determination" data-toggle="collapse" aria-expanded="false" aria-controls="eligibility_determination" class="dropdown-toggle">
-                    <i class="bi bi-ui-checks"></i>
+                <a href="#ed" class="dropdown-toggle" data-bs-toggle="collapse"  role="button" aria-expanded="false" aria-controls="ed">
+                    <i class="bi bi-file-text"></i>
                     Eligibility Determination
                 </a>
-                <ul class="collapse list-unstyled" id="eligibility_determination">
+                <ul class="collapse list-unstyled" id="ed">
                     <li>
-                        <a href="#">Determine Eligibility</a>
+                        <a routerLink="/determine-eligibility">Determine Eligibility</a>
                     </li>
                 </ul>
             </li>
             <li>
-                <a data-bs-toggle="collapse" href="#correspondence" data-toggle="collapse" aria-expanded="false" aria-controls="correspondence" class="dropdown-toggle">
-                    <i class="bi bi-app-indicator"></i>
-                    Correspondence
-                </a>
-                <ul class="collapse list-unstyled" id="correspondence">
+                <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Pages</a>
+                <ul class="collapse list-unstyled" id="pageSubmenu">
                     <li>
-                        <a href="#">Correspondence</a>
+                        <a href="#">Page 1</a>
                     </li>
                     <li>
-                        <a href="#">Pending Notices</a>
+                        <a href="#">Page 2</a>
                     </li>
                     <li>
-                        <a href="#">History Notices</a>
+                        <a href="#">Page 3</a>
                     </li>
                 </ul>
             </li>
             <li>
-                <a href="#"><i class="bi bi-wallet2"></i> Benefit Issuance</a>
+                <a href="#">Portfolio</a>
             </li>
             <li>
-                <a href="#"><i class="bi bi-file-earmark-spreadsheet"></i> Reports</a>
-            </li>
-            <li>
-                <a data-bs-toggle="collapse" href="#admin" data-toggle="collapse" aria-expanded="false" aria-controls="admin" class="dropdown-toggle">
-                    <i class="bi bi-person-workspace"></i>
-                    Admin
-                </a>
-                <ul class="collapse list-unstyled" id="admin">
-                    <li>
-                        <a href="#">Create Account</a>
-                    </li>
-                    <li>
-                        <a href="#">View Accounts</a>
-                    </li>
-                    <li>
-                        <a href="#">Create Plan</a>
-                    </li>
-                    <li>
-                        <a href="#">View Plans</a>
-                    </li>
-                </ul>
+                <a href="#">Contact</a>
             </li>
         </ul>
 
-        <!-- <ul class="list-unstyled CTAs">
-            <li>
-                <a href="https://bootstrapious.com/tutorial/files/sidebar.zip" class="download">Download source</a>
-            </li>
-            <li>
-                <a href="https://bootstrapious.com/p/bootstrap-sidebar" class="article">Back to article</a>
-            </li>
-        </ul> -->
     </nav>
+
+    <!-- Page Content  -->
+    <div id="content">
+        <router-outlet></router-outlet>
+    </div>
 </div>

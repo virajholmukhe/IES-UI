@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
-import { RegistrationRequest } from '../../models/RegistrationRequest';
+import { User } from '../../models/User';
 import { TokenService } from '../../services/token.service';
 import { JwtUtils } from '../../../utils/jwtUtils';
 import { AuthService } from '../../services/auth.service';
@@ -15,7 +15,7 @@ import { AuthService } from '../../services/auth.service';
 })
 export class RegisterComponent implements OnInit{
 
-  registrationRequest: RegistrationRequest = {} as RegistrationRequest;
+  registrationRequest: User = {} as User;
   registerForm!: FormGroup;
   errorMsg: Array<string> = [];
 

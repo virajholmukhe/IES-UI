@@ -26,4 +26,16 @@ export class JwtUtils {
       const currentDate = (Math.floor((new Date).getTime() / 1000));
       return currentDate >= expiry;
     }
+
+    public static getUserType(){
+      var userInfo = this.getUserInfo();
+      const role = userInfo.role as string;
+      return role;
+    }
+
+    public static getUserId(){
+      var userInfo = this.getUserInfo();
+      const userId = userInfo.userId as string;
+      return userId;
+    }
 }

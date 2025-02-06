@@ -1,0 +1,41 @@
+<div class="container">
+    <div class="row w-100">
+        <div class="p-3 mb-4 mt-4 bg-light rounded-3">
+            <div class="">
+                <h2 class="text-center">Plan Selection</h2>
+            </div>
+        </div>
+    </div>
+
+    <div class="row w-100">
+        <div class="p-3 mb-4 mt-4 bg-light rounded-3">
+
+            <!-- Case Number Input -->
+            <div class="form-group mb-3">
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="caseNumber" ngDefaultControl
+                        placeholder="Enter Case Number" [(ngModel)]="caseNumber">
+                    <label for="citizenName">Case Number</label>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="row w-100">
+        <div class="p-3 mb-4 mt-4 bg-light rounded-3">
+
+            <!-- Plan Selection Dropdown/Select -->
+            <select [(ngModel)]="planId" class="form-select" aria-label="Default select example">
+                <option selected disabled>Select Plan</option>
+                <option *ngFor="let plan of planDetailList"  ngDefaultControl value="{{plan.id}}">{{plan.name}}</option>
+            </select>
+
+            <!-- Update Plan Button -->
+            <div class="d-flex justify-content-center">
+                <button (click)="updatePlan()" type="button" class="btn btn-primary mt-3 text-center">Submit</button>
+            </div>
+
+        </div>
+    </div>
+</div>

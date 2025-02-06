@@ -1,0 +1,79 @@
+<div class="container">
+    <div class="row w-100">
+        <div class="p-3 mb-4 mt-4 bg-light rounded-3">
+            <div class="">
+                <h2 class="text-center">Income Details</h2>
+            </div>
+        </div>
+    </div>
+
+    <div class="row w-100">
+        <div class="p-3 mb-4 mt-4 bg-light rounded-3">
+
+            <!-- Case Number Input -->
+            <div class="form-group mb-3">
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="caseNumber" ngDefaultControl
+                        placeholder="Enter Case Number" [(ngModel)]="caseNumber">
+                    <label for="caseNumber">Case Number</label>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="row w-100">
+        <div class="p-3 mb-4 mt-4 bg-light rounded-3">
+            <form [formGroup]="incomeDetailsForm">
+                <div class="row">
+                    <div class="col-6">
+
+                        <!-- Monthly Salary Income-->
+                        <div class="form-group mb-3">
+                            <div class="form-floating mb-3">
+                                <input formControlName="salaryIncome" type="number" class="form-control"
+                                    id="salaryIncome" placeholder="Enter Monthly Salary Income">
+                                <label for="salaryIncome">Monthly Salary Income</label>
+                            </div>
+                        </div>
+
+                        <!-- Rent Income -->
+                        <div class="form-group mb-3">
+                            <div class="form-floating mb-3">
+                                <input formControlName="rentIncome" type="number" class="form-control" id="rentIncome"
+                                    placeholder="Enter Rent Income">
+                                <label for="rentIncome">Rent Income</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6">
+
+                        <!-- Property Income -->
+                        <div class="form-group mb-3">
+                            <div class="form-floating mb-3">
+                                <input formControlName="propertyIncome" type="number" class="form-control"
+                                    id="propertyIncome" placeholder="Enter Property Income">
+                                <label for="propertyIncome">Property Income</label>
+                            </div>
+                        </div>
+
+                        <!-- Business Income -->
+                        <div class="form-group mb-3">
+                            <div class="form-floating mb-3">
+                                <input formControlName="businessIncome" type="number" class="form-control"
+                                    id="businessIncome" placeholder="Enter Business Income">
+                                <label for="businessIncome">Business Income</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div *ngIf="incomeDetailsForm.valid" class="d-flex justify-content-center">
+                    <button (click)="saveIncomeDetails()" type="submit" class="btn btn-primary">Submit</button>
+                </div>
+                <div *ngIf="!incomeDetailsForm.valid" class="d-flex justify-content-center">
+                    <button disabled type="submit" class="btn btn-danger">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

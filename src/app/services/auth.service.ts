@@ -2,7 +2,7 @@ import { HttpClient, HttpClientModule, HttpErrorResponse } from '@angular/common
 import { Injectable } from '@angular/core';
 import { AuthenticationRequest } from '../models/AuthenticationRequest';
 import { catchError, Observable, tap, throwError } from 'rxjs';
-import { RegistrationRequest } from '../models/RegistrationRequest';
+import { User } from '../models/User';
 import { JwtUtils } from '../../utils/jwtUtils';
 import { Router } from '@angular/router';
 import { UpdatePasswordRequest } from '../models/UpdatePasswordRequest';
@@ -17,15 +17,14 @@ export class AuthService {
   constructor(private http: HttpClient, private router: Router) { }
 
   authenticate(body: AuthenticationRequest): Observable<any> {
-    console.log('Authenticating user: ' + JSON.stringify(body));
-    return this.http.post(this.API_BASE_URL+'/auth/authenticate', body, {responseType: 'text'})
+    return this.http.post(this.API_BASE_URL+'/auth/authenticate', body, {responseType: 'json'})
     .pipe(
-      tap((data)=> console.log('Data Fetched: ' + JSON.stringify(data))),
+      tap((data)=> console.log('Data Fetched: ' + data)),
       catchError(this.handleError)
     );
   }
 
-  register(body: RegistrationRequest): Observable<any> {
+  register(body: User): Observable<any> {
     return this.http.post(this.API_BASE_URL+'/auth/register', body)
     .pipe(
       // tap((data)=> console.log('Data Fetched: ' + JSON.stringify(data))),

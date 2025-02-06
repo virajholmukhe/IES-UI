@@ -1,0 +1,148 @@
+<div class="container">
+    <div class="row w-100">
+        <div class="p-3 mb-4 mt-4 bg-light rounded-3">
+            <div class="">
+                <h2 class="text-center">Create Application</h2>
+            </div>
+        </div>
+    </div>
+
+    <div class="row w-100">
+        <div class="p-3 mb-4 mt-4 bg-light rounded-3">
+            <form [formGroup]="applicationForm" class="mb-3">
+                <div class="form-group mb-2">
+                    <div class="alert alert-danger" role="alert" *ngIf="errorMsgs.length">
+                        <p *ngFor="let msg of errorMsgs">{{msg}}</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6">
+
+                        <!-- Citizen Full Name -->
+                        <div class="form-group mb-3">
+                            <div class="form-floating mb-3">
+                                <input formControlName="citizenName" type="text" class="form-control" id="citizenName"
+                                    placeholder="Enter Full Name">
+                                <label for="citizenName">Full Name</label>
+                                <div *ngIf="applicationForm.controls['citizenName'].errors && applicationForm.controls['citizenName'].touched"
+                                    class="alert alert-danger" role="alert">
+                                    <p *ngIf="applicationForm.controls['citizenName'].errors?.['required']"
+                                        id="citizenNameError">
+                                        <span class="font-medium">Oops!</span> Field is required.
+                                    </p>
+                                    <p *ngIf="applicationForm.controls['citizenName'].errors?.['pattern']"
+                                        id="citizenNameError">
+                                        <span class="font-medium">Oops!</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Citizen Email ID -->
+                        <div class="form-group mb-3">
+                            <div class="form-floating mb-3">
+                                <input formControlName="citizenEmail" type="text" class="form-control" id="citizenEmail"
+                                    placeholder="Enter Email ID">
+                                <label for="citizenEmail">Email ID</label>
+                                <div *ngIf="applicationForm.controls['citizenEmail'].errors && applicationForm.controls['citizenEmail'].touched"
+                                    class="alert alert-danger" role="alert">
+                                    <p *ngIf="applicationForm.controls['citizenEmail'].errors?.['required']"
+                                        id="citizenEmailErr">
+                                        <span class="font-medium">Oops!</span> Field is required.
+                                    </p>
+                                    <p *ngIf="applicationForm.controls['citizenEmail'].errors?.['email']"
+                                        id="citizenEmailErr">
+                                        <span class="font-medium">Oops! Only Characters are allowed</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Citizen Date of Birth -->
+                        <div class="form-group mb-3">
+                            <div class="form-floating mb-3">
+                                <input formControlName="citizenDob" type="date" class="form-control" id="citizenDob">
+                                <label for="citizenDob">Date of Birth</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <!-- Citizen Mobile Number -->
+                        <div class="form-group mb-3">
+                            <div class="form-floating mb-3">
+                                <input formControlName="citizenPhone" type="number" class="form-control"
+                                    id="citizenPhone" placeholder="Enter Phone/Mobile Number">
+                                <label for="citizenPhone">Phone No</label>
+                                <div *ngIf="applicationForm.controls['citizenPhone'].errors && applicationForm.controls['citizenPhone'].touched"
+                                    class="alert alert-danger" role="alert">
+                                    <p *ngIf="applicationForm.controls['citizenPhone'].errors?.['required']"
+                                        id="citizenPhoneErr">
+                                        <span class="font-medium">Oops!</span> Field is required.
+                                    </p>
+                                    <p *ngIf="applicationForm.controls['citizenPhone'].errors?.['pattern']"
+                                        id="citizenPhoneErr">
+                                        <span class="font-medium">Oops! Only 10 Digits are allowed</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Citizen Aadhar Number -->
+                        <div class="form-group mb-3">
+                            <div class="form-floating mb-3">
+                                <input formControlName="citizenAadhar" type="number" class="form-control"
+                                    id="citizenAadhar" placeholder="Enter Phone/Mobile Number">
+                                <label for="citizenAadhar">Aadhar Number</label>
+                                <div *ngIf="applicationForm.controls['citizenAadhar'].errors && applicationForm.controls['citizenAadhar'].touched"
+                                    class="alert alert-danger" role="alert">
+                                    <p *ngIf="applicationForm.controls['citizenAadhar'].errors?.['required']"
+                                        id="citizenAadharErr">
+                                        <span class="font-medium">Oops!</span> Field is required.
+                                    </p>
+                                    <p *ngIf="applicationForm.controls['citizenAadhar'].errors?.['pattern']"
+                                        id="citizenAadharErr">
+                                        <span class="font-medium">Oops! Only 12 Digits are allowed</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Citizen Gender -->
+                        <div class="form-group mb-3">
+                            <div class="form-floating mb-3">
+                                <div class="form-group mb-3">
+                                    <label class="form-label">Gender: </label>
+                                    <div>
+                                        <div class="form-check form-check-inline">
+                                            <input formControlName="citizenGender" class="form-check-input" type="radio"
+                                                id="male" value="Male">
+                                            <label class="form-check-label" for="male">Male</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input formControlName="citizenGender" class="form-check-input" type="radio"
+                                                id="female" value="Female">
+                                            <label class="form-check-label" for="female">Female</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input formControlName="citizenGender" class="form-check-input" type="radio"
+                                                id="other" value="Other">
+                                            <label class="form-check-label" for="other">Other</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div *ngIf="applicationForm.valid" class="d-flex justify-content-center">
+                    <button (click)="createApplication()" type="submit" class="btn btn-primary">Create
+                        Application</button>
+                </div>
+                <div *ngIf="!applicationForm.valid" class="d-flex justify-content-center">
+                    <button disabled type="submit" class="btn btn-danger">Create Application</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

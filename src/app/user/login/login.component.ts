@@ -1,10 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, DoCheck, OnInit } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { AuthenticationRequest } from '../../models/AuthenticationRequest';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { AuthService } from '../../services/auth.service';
-import { RegistrationRequest } from '../../models/RegistrationRequest';
 import { TokenService } from '../../services/token.service';
 import { JwtUtils } from '../../../utils/jwtUtils';
 
@@ -29,11 +28,13 @@ export class LoginComponent implements OnInit{
   ) {}
 
   ngOnInit(): void {
+    
     if(this.tokenService.token && !JwtUtils.isTokenExpired()){
       this.router.navigate(['/dashboard'])
     }else{
       localStorage.clear();
     }
+    console.log('Login component DoCheck');
 
     this.loginForm = this.formBuilder.group({
       email:['', [Validators.required]],
@@ -43,7 +44,6 @@ export class LoginComponent implements OnInit{
   
   login() {
     this.errorMsg = [];
-
     this.authRequest.email = this.loginForm.get('email')?.value;
     this.authRequest.password = this.loginForm.get('password')?.value;
     console.log(this.authRequest);
@@ -51,11 +51,16 @@ export class LoginComponent implements OnInit{
     this.authService.authenticate(this.authRequest).subscribe({
       next: (result)=>{
         this.errorMsg = [];
-        this.tokenService.token = result as string;
-        this.router.navigate(['/dashboard'])
+        this.tokenService.token = result.token as string;
+        
       },
       error: (err)=>{
+        console.log(err);
         this.errorMsg.push(err);
+      },
+      complete: ()=>{
+        this.router.navigate(['/dashboard']);
+        window.location.reload();
       }
     });
   }

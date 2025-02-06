@@ -1,0 +1,83 @@
+<div class="container">
+    <div class="row w-100">
+        <div class="p-3 mb-4 mt-4 bg-light rounded-3">
+            <div class="">
+                <h2 class="text-center">Bank Details</h2>
+            </div>
+        </div>
+    </div>
+
+    <div class="row w-100">
+        <div class="p-3 mb-4 mt-4 bg-light rounded-3">
+
+            <!-- Case Number Input -->
+            <div class="form-group mb-3">
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="caseNumber" ngDefaultControl
+                        placeholder="Enter Case Number" [(ngModel)]="caseNumber">
+                    <label for="caseNumber">Case Number</label>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="row w-100">
+        <div class="p-3 mb-4 mt-4 bg-light rounded-3">
+            <form [formGroup]="bankDetailsForm">
+                <div class="row">
+                    <div class="col-6">
+
+                        <!-- Bank Name -->
+                        <div class="form-group mb-3">
+                            <div class="form-floating mb-3">
+                                <input formControlName="bankName" type="text" class="form-control"
+                                    id="bankName" placeholder="Enter Bank Name">
+                                <label for="bankName">Bank Name</label>
+                            </div>
+                        </div>
+
+                        <!-- Bank Account Number -->
+                        <div class="form-group mb-3">
+                            <div class="form-floating mb-3">
+                                <input formControlName="accountNumber" type="number" class="form-control"
+                                    id="accountNumber" placeholder="Enter Bank Account Number">
+                                <label for="accountNumber">Bank Account Number</label>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-6">
+
+                        <!-- Bank IFSC Code -->
+                        <div class="form-group mb-3">
+                            <div class="form-floating mb-3">
+                                <input formControlName="ifscCode" type="text" class="form-control"
+                                    id="ifscCode" placeholder="Enter IFSC Code">
+                                <label for="ifscCode">IFSC Code</label>
+                            </div>
+                        </div>
+
+                        <!-- Bank Branch Name -->
+                        <div class="form-group mb-3">
+                            <div class="form-floating mb-3">
+                                <input formControlName="branchName" type="text" class="form-control"
+                                    id="branchName" placeholder="Enter Branch Name">
+                                <label for="branchName">Branch Name</label>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div *ngIf="bankDetailsForm.valid" class="d-flex justify-content-center">
+                    <button (click)="saveBankDetails()" type="submit" class="btn btn-primary">Submit</button>
+                </div>
+                <div *ngIf="!bankDetailsForm.valid" class="d-flex justify-content-center">
+                    <button disabled type="submit" class="btn btn-danger">Submit</button>
+                </div>
+            </form>
+        </div>
+        
+    </div>
+</div>
