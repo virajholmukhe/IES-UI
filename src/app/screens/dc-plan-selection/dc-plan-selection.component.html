@@ -14,8 +14,11 @@
             <div class="form-group mb-3">
                 <div class="form-floating mb-3">
                     <input type="text" class="form-control" id="caseNumber" ngDefaultControl
-                        placeholder="Enter Case Number" [(ngModel)]="caseNumber">
+                        placeholder="Enter Case Number" value="caseNumber" [(ngModel)]="caseNumber">
                     <label for="citizenName">Case Number</label>
+                    <div *ngIf="errorMsg.length > 0" class="alert alert-danger" role="alert">
+                        <p>{{errorMsg}}</p>
+                    </div>
                 </div>
             </div>
 

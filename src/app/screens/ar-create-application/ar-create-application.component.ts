@@ -15,7 +15,8 @@ import { JwtUtils } from '../../../utils/jwtUtils';
 export class ArCreateApplicationComponent implements OnInit {
 
   applicationForm!: FormGroup;
-  errorMsgs = Array<string>();
+  errorMsgs: string = '';
+  successMsgs: string = '';
   citizenApplication: CitizenApplication = {} as CitizenApplication;
 
   constructor(
@@ -23,6 +24,8 @@ export class ArCreateApplicationComponent implements OnInit {
     private arService: ArService
   ){}
   ngOnInit(): void {
+    this.errorMsgs = '';
+    this.successMsgs = '';
     this.applicationForm = this.formBuilder.group({
       citizenName: ['', [Validators.required, Validators.pattern('^[a-zA-Z ]*$')]],
       citizenEmail: ['', [Validators.required, Validators.email]],
@@ -46,12 +49,15 @@ export class ArCreateApplicationComponent implements OnInit {
     // Call the service to create application
     this.arService.createApplication(this.citizenApplication).subscribe({
       next: (data) => {
-        console.log('Data Fetched: ' + JSON.stringify(data));
-        console.log('Application created successfully');
+        console.log('Data Fetched: ' + data);
+        this.errorMsgs = '';
+        this.successMsgs = "Application created successfully with case number: " + data.caseNumber;
+        this.applicationForm.reset();
       },
       error: (err) => {
         console.log('Error: ' + err);
-        this.errorMsgs.push(err);
+        this.successMsgs = '';
+        this.errorMsgs = err;
       },
       complete: () => {
         console.log('Completed');

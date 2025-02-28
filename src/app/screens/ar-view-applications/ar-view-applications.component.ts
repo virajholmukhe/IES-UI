@@ -3,6 +3,7 @@ import { CitizenApplication } from '../../models/CitizenApplication';
 import { ArService } from '../../services/ar.service';
 import { JwtUtils } from '../../../utils/jwtUtils';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-ar-view-applications',
@@ -18,12 +19,13 @@ export class ArViewApplicationsComponent implements OnInit {
 
   constructor(
     private citizenApplicationService: ArService,
+    private router: Router
     
   ) { }
 
   ngOnInit() {
     this.errorMsg = '';
-    this.citizenApplicationService.getApplications(JwtUtils.getUserId(), JwtUtils.getUserType()).subscribe({
+    this.citizenApplicationService.getApplications().subscribe({
       next: (response) => {
         this.citizenApplicationList = response;
       },
@@ -34,7 +36,10 @@ export class ArViewApplicationsComponent implements OnInit {
         console.log('Completed');
       }
     })
+  }
 
+  routeToDataCollection(caseNumber: string) {
+    this.router.navigate(['/plan-selection', { caseNumber: caseNumber }]);
   }
 
 }

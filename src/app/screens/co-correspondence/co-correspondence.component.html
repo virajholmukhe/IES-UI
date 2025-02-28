@@ -2,7 +2,7 @@
     <div class="row w-100">
         <div class="p-3 mb-4 mt-4 bg-light rounded-3">
             <div class="">
-                <h2 class="text-center">Eligibility Determination</h2>
+                <h2 class="text-center">View Notices</h2>
             </div>
         </div>
     </div>
@@ -18,14 +18,14 @@
                     <label for="citizenName">Case Number</label>
                 </div>
                 <div class="d-flex justify-content-center">
-                    <button (click)="determineEligibility()" type="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" class="btn btn-primary">Submit</button>
                 </div>
             </div>
 
         </div>
     </div>
 
-    <div *ngIf="eligibilityDetails.length > 0" class="row w-100">
+    <div *ngIf="notices.length > 0" class="row w-100">
         <div class="p-3 mb-4 mt-4 bg-light rounded-3">
             <div  class="row w-100">
                 <div class="p-3 mb-4 mt-4 bg-light rounded-3">
@@ -43,15 +43,14 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr *ngFor="let eligibilityDetail of eligibilityDetails; let i = index">
+                            <tr *ngFor="let notice of notices; let i = index">
                                 <td>{{i+1}}</td>
-                                <td>{{eligibilityDetail.planName}}</td>
-                                <td>{{eligibilityDetail.planStatus}}</td>
-                                <td>{{eligibilityDetail.planStartDate}}</td>
-                                <td>{{eligibilityDetail.planEndDate}}</td>
-                                <td>{{eligibilityDetail.benefitAmount}}</td>
-                                <td>NA</td>
-                                <td>{{eligibilityDetail.deniedReason}}</td>
+                                <td>{{notice.planName}}</td>
+                                <td>{{notice.planStatus}}</td>
+                                <td>{{notice.planStartDate}}</td>
+                                <td>{{notice.planEndDate}}</td>
+                                <td>{{notice.benefitAmount}}</td>
+                                <td *ngIf="!notice.isPrinted"><i class="bi bi-printer"></i></td>
                             </tr>
                         </tbody>
                     </table>

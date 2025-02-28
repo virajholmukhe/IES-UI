@@ -19,9 +19,8 @@ export class ArService {
       );
   }
 
-  public getApplications(userId:string, userType:string): Observable<any> {
-    console.log('userId: '+userId + ' userType: '+userType);
-    return this.http.get(this.API_BASE_URL + '/get-all-applications', { params: { userId: userId, userType: userType } })
+  public getApplications(): Observable<any> {
+    return this.http.get(this.API_BASE_URL + '/get-all-applications')
       .pipe(
         tap((data)=> console.log('Data Fetched: ' + JSON.stringify(data))),
         catchError(this.handleError)

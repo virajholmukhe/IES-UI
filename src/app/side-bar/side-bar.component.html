@@ -51,7 +51,7 @@
             </li>
             <li>
                 <a href="#ed" class="dropdown-toggle" data-bs-toggle="collapse"  role="button" aria-expanded="false" aria-controls="ed">
-                    <i class="bi bi-file-text"></i>
+                    <i class="bi bi-ui-checks-grid"></i>
                     Eligibility Determination
                 </a>
                 <ul class="collapse list-unstyled" id="ed">
@@ -61,24 +61,63 @@
                 </ul>
             </li>
             <li>
-                <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Pages</a>
-                <ul class="collapse list-unstyled" id="pageSubmenu">
+                <a href="#co" class="dropdown-toggle" data-bs-toggle="collapse"  role="button" aria-expanded="false" aria-controls="co">
+                    <i class="bi bi-card-heading"></i>
+                    Correspondence
+                </a>
+                <ul class="collapse list-unstyled" id="co">
                     <li>
-                        <a href="#">Page 1</a>
+                        <a routerLink="/correspondence">Correspondence</a>
                     </li>
                     <li>
-                        <a href="#">Page 2</a>
+                        <a routerLink="/pending-notices">Pending Notices</a>
                     </li>
                     <li>
-                        <a href="#">Page 3</a>
+                        <a routerLink="/history-notices">History Notices</a>
                     </li>
                 </ul>
             </li>
             <li>
-                <a href="#">Portfolio</a>
+                <a href="#be" class="dropdown-toggle" data-bs-toggle="collapse"  role="button" aria-expanded="false" aria-controls="be">
+                    <i class="bi bi-bank"></i>
+                    Benefit Issuance
+                </a>
+                <ul class="collapse list-unstyled" id="be">
+                    <li>
+                        <a routerLink="/benefit-issuance">Benefit Issuance</a>
+                    </li>
+                </ul>
             </li>
             <li>
-                <a href="#">Contact</a>
+                <a href="#reports" class="dropdown-toggle" data-bs-toggle="collapse"  role="button" aria-expanded="false" aria-controls="reports">
+                    <i class="bi bi-download"></i>
+                    Reports
+                </a>
+                <ul class="collapse list-unstyled" id="reports">
+                    <li>
+                        <a routerLink="/reports">Reports</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="#admin" class="dropdown-toggle" data-bs-toggle="collapse"  role="button" aria-expanded="false" aria-controls="admin">
+                    <i class="bi bi-download"></i>
+                    Admin
+                </a>
+                <ul class="collapse list-unstyled" id="admin">
+                    <li>
+                        <a routerLink="/create-caseworker">Create Caseworker</a>
+                    </li>
+                    <li>
+                        <a routerLink="/view-caseworker">View Caseworkers</a>
+                    </li>
+                    <li>
+                        <a routerLink="/create-plan">Create Plan</a>
+                    </li>
+                    <li>
+                        <a routerLink="/view-plan">View Plans</a>
+                    </li>
+                </ul>
             </li>
         </ul>
 

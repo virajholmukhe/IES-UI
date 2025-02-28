@@ -23,6 +23,22 @@ export class DcService {
       );
   }
 
+  public getIncomeDetails(caseNumber: string): Observable<any> {
+    return this.http.get(this.API_BASE_URL + '/get-income-details/' + caseNumber)
+      .pipe(
+        tap((data) => console.log('Data Fetched: ' + JSON.stringify(data))),
+        catchError(this.handleError)
+      );
+  }
+
+  public updateIncomeDetails(incomeDetails: IncomeDetails): Observable<any> {
+    return this.http.post(this.API_BASE_URL + '/update-income-details', incomeDetails)
+      .pipe(
+        tap((data) => console.log('Data Updated: ' + JSON.stringify(data))),
+        catchError(this.handleError)
+      );
+  }
+
   public saveIncomeDetails(incomeDetails: IncomeDetails): Observable<any> {
     return this.http.post(this.API_BASE_URL + '/save-income-details', incomeDetails)
       .pipe(

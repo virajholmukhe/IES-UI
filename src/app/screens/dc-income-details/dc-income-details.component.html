@@ -17,6 +17,12 @@
                         placeholder="Enter Case Number" [(ngModel)]="caseNumber">
                     <label for="caseNumber">Case Number</label>
                 </div>
+                <div class="d-flex justify-content-center">
+                    <button (click)="getIncomeDetails()" type="submit" class="btn btn-primary">Get Details</button>
+                </div>
+                <div *ngIf="errorMessage" class="alert alert-danger mt-1 mb-1 p-1" role="alert">
+                    <p>{{errorMessage}}</p>
+                </div>
             </div>
 
         </div>
@@ -67,11 +73,13 @@
                         </div>
                     </div>
                 </div>
-                <div *ngIf="incomeDetailsForm.valid" class="d-flex justify-content-center">
-                    <button (click)="saveIncomeDetails()" type="submit" class="btn btn-primary">Submit</button>
-                </div>
-                <div *ngIf="!incomeDetailsForm.valid" class="d-flex justify-content-center">
-                    <button disabled type="submit" class="btn btn-danger">Submit</button>
+                <div>
+                    <div *ngIf="incomeDetailsForm.valid" class="d-flex justify-content-center">
+                        <button (click)="saveIncomeDetails()" type="submit" class="btn btn-primary">Save</button>
+                    </div>
+                    <div *ngIf="!incomeDetailsForm.valid" class="d-flex justify-content-center">
+                        <button disabled type="submit" class="btn btn-danger">Save</button>
+                    </div>
                 </div>
             </form>
         </div>

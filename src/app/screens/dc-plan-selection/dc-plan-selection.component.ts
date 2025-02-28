@@ -4,7 +4,8 @@ import { PlanDetails } from '../../models/PlanDetails';
 import { DcService } from '../../services/dc.service';
 import { FormsModule } from '@angular/forms';
 import { ArService } from '../../services/ar.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { map } from 'rxjs';
 
 @Component({
   selector: 'app-dc-plan-selection',
@@ -24,11 +25,13 @@ export class DcPlanSelectionComponent implements OnInit {
   constructor(
     private dcService: DcService,
     private arService: ArService,
-    private router: Router
+    private router: Router,
+    private activatedRoute: ActivatedRoute
   ) { }
   ngOnInit(): void {
     this.getPlanList();
     this.errorMsg = '';
+    this.caseNumber = this.activatedRoute.snapshot.paramMap.get('caseNumber') || '';
   }
 
   updatePlan(){
@@ -41,7 +44,7 @@ export class DcPlanSelectionComponent implements OnInit {
       this.arService.updatePlan(this.caseNumber, this.planId, this.planName).subscribe({
         next: data => {
           console.log('Data: ', data);
-          this.router.navigate(['/education-details']);
+          this.router.navigate(['/income-details']);
         },
         error: err => {
           this.errorMsg = err;

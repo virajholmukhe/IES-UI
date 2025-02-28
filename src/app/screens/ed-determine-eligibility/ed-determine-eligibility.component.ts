@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { EdService } from '../../services/ed.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { EligibilityDetails } from '../../models/EligibilityDetails';
 
 @Component({
   selector: 'app-ed-determine-eligibility',
@@ -17,14 +18,33 @@ export class EdDetermineEligibilityComponent implements OnInit {
   ) { }
 
   caseNumber: string = '';
+  errorMsg: string = '';
+  eligibilityDetails: Array<EligibilityDetails> = new Array<EligibilityDetails>();
 
   ngOnInit(): void {
-    throw new Error('Method not implemented.');
+    this.errorMsg = '';
   }
 
 
   determineEligibility() {
+    this.apiCall();
     // Code to determine eligibility
+    
+  }
+
+  apiCall(){
+    this.edService.determineEligibility(this.caseNumber).subscribe({
+      next: (data: any) => {
+        this.eligibilityDetails = data;
+      },
+      error: (err: any) => {
+        this.errorMsg = err;
+      },
+      complete: () => {
+        console.log('Completed');
+        console.log(this.errorMsg);
+      }
+    });
   }
 
 }
